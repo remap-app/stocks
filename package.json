@@ -1,0 +1,44 @@
+{
+  "name": "stocks",
+  "version": "0.0.0",
+  "private": true,
+  "description": "ReMap Stocks Microservice",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava",
+    "lint": "eslint .",
+    "start": "micro -l tcp://0.0.0.0:${PORT:-3000}",
+    "dev": "micro-dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/remap-app/stocks.git"
+  },
+  "engines": {
+    "node": "10.9.x",
+    "npm": "6.x.x",
+    "yarn": "1.9.x"
+  },
+  "author": "Shingo Sato",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/remap-app/stocks/issues"
+  },
+  "homepage": "https://github.com/remap-app/stocks#readme",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "micro": "^9.3.3",
+    "micro-compose": "^0.0.3",
+    "micro-cors-multiple-allow-origin": "^1.0.1",
+    "micro-errors": "^2.0.0",
+    "microrouter": "^3.1.3",
+    "node-fetch": "^2.2.0",
+    "url-pattern": "^1.0.3"
+  },
+  "devDependencies": {
+    "ava": "^1.0.0-beta.7",
+    "eslint": "^5.4.0",
+    "eslint-plugin-node": "^7.0.1",
+    "micro-dev": "^3.0.0"
+  }
+}
