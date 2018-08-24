@@ -14,6 +14,7 @@ module.exports = async (req, res) => {
   if (
     _isNaN(page) ||
     _isNaN(perPage) ||
+    page < 1 ||
     perPage > 10
   ) {
     throw createError(400, STATUS_CODES[400])
