@@ -8,7 +8,7 @@
     "test": "ava",
     "lint": "eslint .",
     "start": "micro -l tcp://0.0.0.0:${PORT:-3000}",
-    "dev": "micro-dev"
+    "dev": "micro-dev -i model.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,9 @@
   "homepage": "https://github.com/remap-app/stocks#readme",
   "dependencies": {
     "dotenv": "^6.0.0",
+    "lodash.camelcase": "^4.3.0",
+    "lodash.snakecase": "^4.1.1",
+    "map-obj": "^3.0.0",
     "micro": "^9.3.3",
     "micro-compose": "^0.0.3",
     "micro-cors-multiple-allow-origin": "^1.0.1",

@@ -8,8 +8,11 @@ ReMap Stocks Microservice
 curl / \
   -H "Authorization: Bearer ${TOKEN}" \
   -d '{
-    "restaurant_id: "'${ID}'"
+    "restaurant_id": "'${ID}'"
   }'
+
+HTTP/1.1 201 Created
+Location: /5b7fb6144add9091c4396d1a
 ```
 
 ## Get List
