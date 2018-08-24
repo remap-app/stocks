@@ -6,6 +6,7 @@ const { handleErrors } = require('micro-errors')
 const cors = require('micro-cors-multiple-allow-origin')
 const UrlPattern = require('url-pattern')
 const { connect } = require('./db')
+const authenticate = require('./authenticate')
 const create = require('./routes/create')
 const getList = require('./routes/getList')
 const getById = require('./routes/getById')
@@ -18,7 +19,8 @@ module.exports = compose(
   cors({
     allowMethods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
     origin: process.env.CORS_ALLOWED_ORIGINS.split(','),
-  })
+  }),
+  authenticate
 )(
   router(
     post('/', create),
