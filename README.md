@@ -18,7 +18,7 @@ Location: /5b7fb6144add9091c4396d1a
 ## Get List
 
 ```http
-curl / -H "Authorization: Bearer ${TOKEN}"
+curl "/?page=2&per_page=15" -H "Authorization: Bearer ${TOKEN}"
 ```
 
 ## Get By ID

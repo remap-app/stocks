@@ -21,7 +21,8 @@ module.exports = async (req, res) => {
     .limit(perPage)
     .skip((page - 1) * perPage)
     .select('restaurantId')
-    .exec().catch(error => {
+    .exec()
+    .catch(error => {
       throw createError(500, STATUS_CODES[500], error, null, {
         dbErrorName: error.name,
         dbErrorMessage: error.message,
