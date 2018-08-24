@@ -9,9 +9,13 @@ const Stock = require('../model')
 module.exports = async (req, res) => {
   const { query } = parseUrl(req.url, true)
   const page = toNubmer(query.page || '1')
-  const perPage = toNubmer(query.per_page || '20')
+  const perPage = toNubmer(query.per_page || '10')
 
-  if (_isNaN(page) || _isNaN(perPage)) {
+  if (
+    _isNaN(page) ||
+    _isNaN(perPage) ||
+    perPage > 10
+  ) {
     throw createError(400, STATUS_CODES[400])
   }
 
