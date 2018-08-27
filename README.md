@@ -61,4 +61,6 @@ Content-Length: 156
 
 ```http
 curl /:id -XDELETE -H "Authorization: Bearer ${TOKEN}"
+
+HTTP/1.1 204 No Content
 ```
