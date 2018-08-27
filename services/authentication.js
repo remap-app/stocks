@@ -10,10 +10,8 @@ module.exports = async idToken => {
     mode: 'cors',
   })
 
-  const json = await res.json().catch(throwInternalServerError)
-
   if (res.ok) {
-    return json
+    return await res.json().catch(throwInternalServerError)
   }
 
   throw createError(res.status, STATUS_CODES[res.status])
