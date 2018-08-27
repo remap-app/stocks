@@ -1,10 +1,9 @@
 const { STATUS_CODES } = require('http')
-const { send } = require('micro')
 const { createError } = require('micro-errors')
 const mongoose = require('mongoose')
 const Stock = require('../model')
 
-module.exports = async (req, res) => {
+module.exports = async req => {
   const { id } = req.params
   if (!id) {
     throw createError(404, STATUS_CODES[404])
@@ -29,12 +28,10 @@ module.exports = async (req, res) => {
     throw createError(404, STATUS_CODES[404])
   }
 
-  const ret = {
+  return {
     id: result.id,
     restaurant_id: result.restaurantId,
     created_at: result.createdAt,
     updated_at: result.updatedAt,
   }
-
-  send(res, 200, ret)
 }

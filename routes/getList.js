@@ -1,12 +1,11 @@
 const { STATUS_CODES } = require('http')
 const { parse: parseUrl } = require('url')
-const { send } = require('micro')
 const { createError } = require('micro-errors')
 const toNubmer = require('lodash.tonumber')
 const _isNaN = require('lodash.isnan')
 const Stock = require('../model')
 
-module.exports = async (req, res) => {
+module.exports = async req => {
   const { query } = parseUrl(req.url, true)
   const page = toNubmer(query.page || '1')
   const perPage = toNubmer(query.per_page || '10')
@@ -35,7 +34,7 @@ module.exports = async (req, res) => {
       })
     })
 
-  const ret = results.map(stock => {
+  return results.map(stock => {
     return {
       id: stock.id,
       restaurant_id: stock.restaurantId,
@@ -43,6 +42,4 @@ module.exports = async (req, res) => {
       updated_at: stock.updatedAt,
     }
   })
-
-  send(res, 200, ret)
 }
