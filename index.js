@@ -12,7 +12,7 @@ const getList = require('./routes/getList')
 const getById = require('./routes/getById')
 const deleteById = require('./routes/deleteById')
 
-connect(`${process.env.DATABASE_URL}/${process.env.DATABASE_COLLECTION_NAME}`)
+connect(`mongodb://${process.env.DATABASE_HOSTNAME}:${process.env.DATABASE_PORT}/${process.env.DATABASE_COLLECTION_NAME}`)
 
 module.exports = compose(
   handleErrors({ debug: process.env.NODE_ENV !== 'production' }),
