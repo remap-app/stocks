@@ -25,7 +25,7 @@ module.exports = async (req, res) => {
     .sort({ createdAt: -1 })
     .limit(perPage)
     .skip((page - 1) * perPage)
-    .select('restaurantId')
+    .select('restaurantId createdAt updatedAt')
     .exec()
     .catch(error => {
       throw createError(500, STATUS_CODES[500], error, null, {
@@ -35,6 +35,14 @@ module.exports = async (req, res) => {
       })
     })
 
-  // TODO:
-  send(res, 200, results)
+  const ret = results.map(stock => {
+    return {
+      id: stock.id,
+      restaurant_id: stock.restaurantId,
+      created_at: stock.createdAt,
+      updated_at: stock.updatedAt,
+    }
+  })
+
+  send(res, 200, ret)
 }
