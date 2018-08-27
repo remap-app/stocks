@@ -23,5 +23,6 @@ module.exports = fn => async (req, res, ...rest) => {
   }
 
   req.userId = userId
+
   return fn(req, res, ...rest)
 }

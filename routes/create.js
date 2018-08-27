@@ -6,6 +6,10 @@ const { throwInternalServerError } = require('../utils')
 
 module.exports = async (req, res) => {
   const { restaurant_id: restaurantId } = await json(req).catch(throwInternalServerError)
+  if (!restaurantId) {
+    throw createError(400, STATUS_CODES[400], null, null, { detail: '`restaurant_id` must be required' })
+  }
+
   const stock = new Stock({ restaurantId, userId: req.userId })
   const result = await stock.save().catch(error => {
     throw createError(500, STATUS_CODES[500], error, null, {
