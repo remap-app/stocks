@@ -44,6 +44,17 @@ Content-Length: 345
 
 ```http
 curl /:id -H "Authorization: Bearer ${TOKEN}"
+
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Content-Length: 156
+
+{
+  "id": "5b8365e75c7c8105811b780b",
+  "restaurant_id": "7173578",
+  "created_at": "2018-08-27T02:45:59.712Z",
+  "updated_at": "2018-08-27T02:45:59.712Z"
+}
 ```
 
 ## Delete By ID
