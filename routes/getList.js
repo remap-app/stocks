@@ -20,7 +20,7 @@ module.exports = async req => {
   }
 
   const results = await Stock
-    .find({ userId: req.userId })
+    .find({ userId: req.auth.uid })
     .sort({ createdAt: -1 })
     .limit(perPage)
     .skip((page - 1) * perPage)

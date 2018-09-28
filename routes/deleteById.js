@@ -11,7 +11,7 @@ module.exports = async (req, res) => {
   }
 
   const result = await Stock
-    .findByIdAndDelete(id)
+    .findOneAndDelete({ _id: id, userId: req.auth.uid })
     .exec()
     .catch(error => {
       if (error instanceof mongoose.Error.CastError) {

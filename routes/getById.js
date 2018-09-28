@@ -10,7 +10,7 @@ module.exports = async req => {
   }
 
   const result = await Stock
-    .findById(id)
+    .findOne({ _id: id, userId: req.auth.uid })
     .select('restaurantId createdAt updatedAt')
     .exec()
     .catch(error => {

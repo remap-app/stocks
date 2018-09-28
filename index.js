@@ -5,8 +5,9 @@ const compose = require('micro-compose')
 const { handleErrors } = require('micro-errors')
 const cors = require('micro-cors-multiple-allow-origin')
 const UrlPattern = require('url-pattern')
+const authenticateMiddleware = require('@remap/authenticate-middleware')
+const { Authentication } = require('@remap/services')
 const { connect } = require('./db')
-const authenticate = require('./authenticate')
 const create = require('./routes/create')
 const getList = require('./routes/getList')
 const getById = require('./routes/getById')
@@ -20,7 +21,7 @@ module.exports = compose(
     allowMethods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
     origin: process.env.CORS_ALLOWED_ORIGINS.split(','),
   }),
-  authenticate
+  authenticateMiddleware({ authenticate: Authentication.authenticate.bind(Authentication) }),
 )(
   router(
     post('/', create),
