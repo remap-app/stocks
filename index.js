@@ -26,6 +26,6 @@ module.exports = compose(
     post('/', create),
     get('/', getList),
     get(new UrlPattern(/^\/([\w-]+)$/, ['id']), getById),
-    del(new UrlPattern(/^\/([\w-]+)$/, ['id']), deleteById)
+    del(new UrlPattern(/^\/([\w-]+)$/, ['id']), deleteById),
   )
 )
