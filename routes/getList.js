@@ -19,8 +19,15 @@ module.exports = async req => {
     throw createError(400, STATUS_CODES[400])
   }
 
+  const conditions = { userId: req.auth.uid }
+  const restaurantIds = (query.restaurant_ids || '').split(',').filter(id => !!id)
+
+  if (restaurantIds.length > 0) {
+    conditions.restaurantId = { $in: restaurantIds }
+  }
+
   const results = await Stock
-    .find({ userId: req.auth.uid })
+    .find(conditions)
     .sort({ createdAt: -1 })
     .limit(perPage)
     .skip((page - 1) * perPage)
